@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the SettleDebt API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before do
       doc = <<-XML
         <SettleDebtResponse xmlns="http://fps.amazonaws.com/doc/2008-09-17/">
@@ -16,19 +16,19 @@ describe "the SettleDebt API" do
           </ResponseMetadata>
         </SettleDebtResponse>
       XML
-      
+
       @response = Remit::SettleDebt::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.settle_debt_result.should_not be_nil
     end
-    
-    
+
+
     it "has a transaction id" do
       @response.settle_debt_result.transaction_id.should_not be_nil
     end
@@ -36,6 +36,6 @@ describe "the SettleDebt API" do
     it "has a transaction status" do
       @response.settle_debt_result.transaction_status.should_not be_nil
     end
-    
+
   end
 end

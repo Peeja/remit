@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the Refund API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before do
       doc = <<-XML
         <RefundResponse xmlns="http://fps.amazonaws.com/doc/2008-09-17/">
@@ -16,19 +16,19 @@ describe "the Refund API" do
           </ResponseMetadata>
         </RefundResponse>
       XML
-      
+
       @response = Remit::Refund::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.refund_result.should_not be_nil
     end
-    
-    
+
+
     it "has a transaction id" do
       @response.refund_result.transaction_id.should_not be_nil
     end
@@ -36,6 +36,6 @@ describe "the Refund API" do
     it "has a transaction status" do
       @response.refund_result.transaction_status.should_not be_nil
     end
-    
+
   end
 end

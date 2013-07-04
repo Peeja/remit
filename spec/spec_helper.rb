@@ -22,11 +22,17 @@ if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
 end
 
 require 'spec'
+require 'remit'
 
-require File.expand_path(File.dirname(__FILE__) + '/../lib/remit')
+ACCESS_KEY = ENV['AWS_ACCESS_KEY'] || ENV['AMAZON_ACCESS_KEY_ID']
+SECRET_KEY = ENV['AWS_SECRET_KEY'] || ENV['AMAZON_SECRET_ACCESS_KEY']
 
-def remit(access_key = ACCESS_KEY, seret_key = SECRET_KEY)
-  @remit ||= Remit::API.new(access_key, seret_key, true)
+def remit(access_key = ACCESS_KEY, secret_key = SECRET_KEY)
+  unless ACCESS_KEY and SECRET_KEY
+    raise RuntimeError, "You must set your AWS_ACCESS_KEY and AWS_SECRET_KEY environment variables to run integration tests"
+  end
+
+  @remit ||= Remit::API.new(access_key, secret_key, true)
 end
 
 describe 'a successful response', :shared => true do
@@ -43,7 +49,7 @@ describe 'a successful response', :shared => true do
       @response.errors.should be_nil
     end
     #puts "errors = #{@response.errors.class} - #{@response.errors.size}"
-    
+
   end
 
   it "has a request id" do

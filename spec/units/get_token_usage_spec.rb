@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the GetTokenUsage API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before do
       doc = <<-XML
         <GetTokenUsageResponse xmlns="http://fps.amazonaws.com/doc/2008-09-17/">
@@ -34,18 +34,18 @@ describe "the GetTokenUsage API" do
            </ResponseMetadata>
         </GetTokenUsageResponse>
       XML
-      
+
       @response = Remit::GetTokenUsage::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.get_token_usage_result.should_not be_nil
     end
-    
-    
+
+
   end
 end

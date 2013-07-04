@@ -22,4 +22,4 @@ if $LOADED_FEATURES.grep(/spec\/units\/units_helper\.rb/).any?
 end
 
 # Actual code of Units Helper below:
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'

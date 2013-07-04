@@ -1,23 +1,23 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the GetTokenByCaller API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before(:all) do
       doc = File.read("spec/mocks/GetTokenByCallerResponse.xml")
-      
+
       @response = Remit::GetTokenByCaller::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.get_token_by_caller_result.should_not be_nil
     end
-    
+
     it "should have Token" do
       @response.get_token_by_caller_result.token.should_not be_nil
     end

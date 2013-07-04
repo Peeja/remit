@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/integrations_helper'
+require 'integrations/integrations_helper'
 
 describe "VerifySignature API" do
 

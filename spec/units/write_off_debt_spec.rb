@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the WriteOffDebt API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before do
       doc = <<-XML
         <WriteOffDebtResponse xmlns="http://fps.amazonaws.com/doc/2008-09-17/">
@@ -16,19 +16,19 @@ describe "the WriteOffDebt API" do
           </ResponseMetadata>
         </WriteOffDebtResponse>
       XML
-      
+
       @response = Remit::WriteOffDebt::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.write_off_debt_result.should_not be_nil
     end
-    
-    
+
+
     it "has a transaction id" do
       @response.write_off_debt_result.transaction_id.should_not be_nil
     end
@@ -36,6 +36,6 @@ describe "the WriteOffDebt API" do
     it "has a transaction status" do
       @response.write_off_debt_result.transaction_status.should_not be_nil
     end
-    
+
   end
 end

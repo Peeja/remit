@@ -1,19 +1,19 @@
-require File.dirname(__FILE__) + '/units_helper'
+require 'units/units_helper'
 
 describe "the GetTokens API" do
   describe "a successful response" do
     it_should_behave_like 'a successful response'
-    
+
     before(:all) do
-      doc = File.read("spec/mocks/GetTokensResponse.xml") 
-      
+      doc = File.read("spec/mocks/GetTokensResponse.xml")
+
       @response = Remit::GetTokens::Response.new(doc)
     end
-    
+
     it "has metadata" do
       @response.response_metadata.should_not be_nil
     end
-    
+
     it "has results" do
       @response.get_tokens_result.should_not be_nil
     end

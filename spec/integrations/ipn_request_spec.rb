@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/integrations_helper'
+require 'integrations/integrations_helper'
 
 describe 'an IPN request with a bad signature' do
 # This needs to be updated to match the new Verify methods
