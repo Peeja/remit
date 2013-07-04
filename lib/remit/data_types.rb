@@ -105,11 +105,11 @@ module Remit
   end
 
   class TokenUsageLimit < BaseResponse
+    parameter :amount, :type => Amount
     parameter :count
-    parameter :limit
-    parameter :last_reset_amount
+    parameter :last_reset_amount, :type => Amount
     parameter :last_reset_count
-    parameter :last_reset_time_stamp
+    parameter :last_reset_timestamp, :type => :time
   end
 
   class TransactionPart < Remit::BaseResponse
