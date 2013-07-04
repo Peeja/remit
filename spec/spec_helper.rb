@@ -23,6 +23,9 @@ end
 
 require 'spec'
 require 'remit'
+require 'dotenv'
+
+Dotenv.load
 
 ACCESS_KEY = ENV['AWS_ACCESS_KEY'] || ENV['AMAZON_ACCESS_KEY_ID']
 SECRET_KEY = ENV['AWS_SECRET_KEY'] || ENV['AMAZON_SECRET_ACCESS_KEY']

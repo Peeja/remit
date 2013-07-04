@@ -18,3 +18,4 @@ tmp
 .idea
 test.sh
 .rvmrc
+.env
