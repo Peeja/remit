@@ -1,8 +1,6 @@
 require 'base64'
 require 'erb'
 require 'uri'
-
-require 'rubygems'
 require 'relax'
 
 require File.dirname(__FILE__) + '/../amazon/fps/signatureutils'

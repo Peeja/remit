@@ -7,10 +7,6 @@ require 'date'
 require 'base64'
 require 'erb'
 require 'cgi'
-
-require 'rubygems'
-
-gem 'relax', '0.0.7'
 require 'relax'
 
 

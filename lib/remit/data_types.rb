@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'relax'
 
 require 'remit/common'

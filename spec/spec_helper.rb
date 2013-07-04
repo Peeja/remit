@@ -21,7 +21,6 @@ if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
   end
 end
 
-require 'rubygems'
 require 'spec'
 
 require File.expand_path(File.dirname(__FILE__) + '/../lib/remit')

@@ -1,32 +1,8 @@
-require 'rubygems'
-require 'rake/clean'
+require "bundler/gem_tasks"
 require 'spec/rake/spectask'
 
 desc 'Default: run specs.'
 task :default => :spec
-
-begin
-  require 'jeweler'
-
-  Jeweler::Tasks.new do |gem|
-    gem.name = 'remit'
-    gem.summary = 'An API for using the Amazon Flexible Payment Service (FPS).'
-    gem.email = 'peter.boling+remit@gmail.com'
-    gem.homepage = 'http://github.com/nyc-ruby-meetup/remit'
-    gem.authors = ['Tyler Hunt','Peter Boling']
-    gem.rubyforge_project = 'remit-nyc'
-    gem.platform           = Gem::Platform::RUBY
-    gem.files              = FileList['{bin,lib}/**/*'].to_a
-    gem.require_path       = 'lib'
-    gem.test_files         = FileList['{spec}/**/{*spec.rb,*helper.rb,*.xml}'].to_a
-    gem.has_rdoc           = true
-    gem.extra_rdoc_files   = ['README.markdown', 'LICENSE']
-
-    gem.add_dependency('relax', '~> 0.0.7')
-  end
-rescue LoadError
-  puts 'Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com'
-end
 
 task :spec do
   Rake::Task["spec:units"].invoke
