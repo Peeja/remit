@@ -10,7 +10,7 @@ module Remit
 
     attr_reader :supplied_signature
     attr_reader :allow_sigv1
-    
+
     # BJM: need to access sometimes from the app
     attr_reader :hash_params
     # signature key name
@@ -49,7 +49,7 @@ module Remit
       @supplied_signature = @hash_params[self.class::SIGNATURE_KEY]
       @allow_sigv1        = options[:allow_sigv1] || false
     end
-    
+
     def valid?
       if @hash_params['signatureVersion'].to_i == 2
         #puts "\nhash_params: #{@hash_params.inspect}\n"
@@ -71,13 +71,22 @@ module Remit
         false
       end
     end
-    
+
     def method_missing(method, *args, &block) #:nodoc:
       return @hash_params[method.to_s] if @hash_params.has_key?(method.to_s)
       return @hash_params[method.to_sym] if @hash_params.has_key?(method.to_sym)
       key = self.convert_key(method)
       return @hash_params[key] if @hash_params.has_key?(key)
       return @hash_params[key.to_s] if @hash_params.has_key?(key.to_s)
+      super
+    end
+
+    def respond_to_missing?(method, include_private = false)
+      return true if @hash_params.has_key?(method.to_s)
+      return true if @hash_params.has_key?(method.to_sym)
+      key = self.convert_key(method)
+      return true if @hash_params.has_key?(key)
+      return true if @hash_params.has_key?(key.to_s)
       super
     end
   end
