@@ -112,7 +112,7 @@ module Remit
     parameter :last_reset_timestamp, :type => :time
   end
 
-  class TransactionPart < Remit::BaseResponse
+  class TransactionPart < BaseResponse
     parameter :account_id
     parameter :role
     parameter :name
@@ -121,8 +121,12 @@ module Remit
     parameter :fee_paid, :type => Amount
   end
 
-  class Transaction < BaseResponse
+  class RelatedTransaction < BaseResponse
+    parameter :relation_type
+    parameter :transaction_id
+  end
 
+  class Transaction < BaseResponse
     parameter :caller_name
     parameter :caller_reference
     parameter :caller_description
@@ -138,7 +142,7 @@ module Remit
     parameter :recipient_name
     parameter :recipient_email
     parameter :recipient_token_id
-    parameter :related_transactions
+    parameter :related_transaction, :type => RelatedTransaction
     parameter :sender_email
     parameter :sender_name
     parameter :sender_token_id
