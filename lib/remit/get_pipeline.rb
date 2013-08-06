@@ -105,6 +105,7 @@ module Remit
 
     class RecipientPipeline < Pipeline
       parameter :caller_reference
+      parameter :caller_reference_refund
       parameter :max_fixed_fee
       parameter :max_variable_fee
       parameter :payment_method
