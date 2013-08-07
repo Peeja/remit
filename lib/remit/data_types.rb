@@ -137,6 +137,7 @@ module Remit
     parameter :fees, :element=>"FPSFees", :type => Amount
     parameter :fps_fees_paid_by, :element=>"FPSFeesPaidBy"
     parameter :fps_operation, :element=>"FPSOperation"
+    parameter :marketplace_fees, :type => Amount
     parameter :meta_data
     parameter :payment_method
     parameter :recipient_name
